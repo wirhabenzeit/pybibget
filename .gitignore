@@ -1,0 +1,11 @@
+.DS_Store
+*.aux
+*.bbl
+*.bcf
+*.bcg
+*.dvi
+*.fdb_latexmk
+*.out
+*.run.xml
+*.synctex.gz
+texput.log
