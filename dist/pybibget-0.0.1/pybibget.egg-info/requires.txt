@@ -1,4 +1,0 @@
-requests
-pybtex
-lxml
-pylatexenc

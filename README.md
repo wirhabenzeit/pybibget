@@ -58,10 +58,10 @@ $ pip install pybibget
     URL = "https://doi.org/10.1109/TIT.2006.885507"
 }
 
-@article{math/0211159,
+@unpublished{math/0211159,
     author = "Perelman, Grisha",
     title = "{The} entropy formula for the {Ricci} flow and its geometric applications",
-    journal = "preprint",
+    note = "Preprint",
     year = "2002",
     eprint = "math/0211159",
     archiveprefix = "arXiv"
@@ -114,7 +114,6 @@ With the option `-f filename` the result can be *appended* to any given file dir
 % pybibget MR0026286 10.1109/TIT.2006.885507 math/0211159 PMID:271968 10.1109/CVPR.2016.90 hep-th/9711200 -f bibliography.bib
 Succesfully appended 6 BibTeX entries to bibliography.bib
 ``` 
-the result can be *appended* to a given `.bib` file.
 
 ### TeX File Parsing
 
