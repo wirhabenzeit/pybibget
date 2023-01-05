@@ -13,7 +13,8 @@ RE_DOI = r'10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+'
 RE_ARXIV_OLD = r'\b[a-zA-Z\-\.]{2,10}\/\d{7}(?:v\d)?\b'
 RE_ARXIV_NEW = r'\b\d{4}\.\d{4,5}(?:v\d)?\b'
 
-def getbibentry(key,verbose=False):
+
+def getbibentry(key, verbose=False):
     """
     Get a bibentry from a citation key.
 
@@ -33,31 +34,32 @@ def getbibentry(key,verbose=False):
     ValueError
         If the citation key is invalid or the entry is not found.
     """
-    if re.match(RE_MSC,key):
+    if re.match(RE_MSC, key):
         if verbose:
-            print(f"Looking for {key} on MathSciNet...",end=" ")
-        return get_mathscinet_bibentry(mrkey=key,verbose=verbose)
-    if re.match(RE_PMID,key):
+            print(f"Looking for {key} on MathSciNet...", end=" ")
+        return get_mathscinet_bibentry(mrkey=key, verbose=verbose)
+    if re.match(RE_PMID, key):
         if verbose:
-            print(f"Looking for {key} on PubMed...",end=" ")
-        return get_pubmed_bibentry(pmid=key,verbose=verbose)
+            print(f"Looking for {key} on PubMed...", end=" ")
+        return get_pubmed_bibentry(pmid=key, verbose=verbose)
     if re.match(RE_ARXIV_OLD, key) or re.match(RE_ARXIV_NEW, key):
         if verbose:
-            print(f"Looking for arXiv:{key}...",end=" ")
-        return get_arxiv_bibentry(key,verbose=verbose)
-    if re.match(RE_DOI,key):
+            print(f"Looking for arXiv:{key}...", end=" ")
+        return get_arxiv_bibentry(key, verbose=verbose)
+    if re.match(RE_DOI, key):
         try:
             if verbose:
-                print(f"Looking for {key} on MathSciNet...",end=" ")
-            return get_mathscinet_bibentry(doi=key,verbose=verbose)
+                print(f"Looking for {key} on MathSciNet...", end=" ")
+            return get_mathscinet_bibentry(doi=key, verbose=verbose)
         except ValueError:
             if verbose:
                 print(f"Not found. Looking for {key} on doi.org...",end=" ")
-            return get_doi_bibentry(key,verbose=verbose)
+            return get_doi_bibentry(key, verbose=verbose)
     else:
         raise ValueError(f"Invalid citation key {key}!\n")
 
-def get_mathscinet_bibentry(mrkey=None,doi=None,verbose=False):
+
+def get_mathscinet_bibentry(mrkey=None, doi=None, verbose=False):
     """
     Get a bibentry from a MathSciNet citation key or DOI.
 
@@ -86,20 +88,21 @@ def get_mathscinet_bibentry(mrkey=None,doi=None,verbose=False):
     else:
         raise ValueError("Either mrkey or doi must be specified.")
     if verbose:
-        print(f"Connecting to {url}...",end=" ")
-    page = requests.get(url,timeout=10)
+        print(f"Connecting to {url}...", end=" ")
+    page = requests.get(url, timeout=10)
     tree = html.fromstring(page.content)
     if bibstrings := tree.xpath('//pre/text()'):
         if verbose:
             print("Success!")
-        bibstr=bibstrings[0]
+        bibstr = bibstrings[0]
     else:
         raise ValueError(f"{mrkey if mrkey else doi} not found! Please check the citation key and whether you have access to MathSciNet.")
-    entries = parse_string(bibstr,'bibtex').entries
-    univ_id= list(entries.keys())[0]
+    entries = parse_string(bibstr, 'bibtex').entries
+    univ_id = list(entries.keys())[0]
     return entries[univ_id]
 
-def get_doi_bibentry(doi,verbose=False):
+
+def get_doi_bibentry(doi, verbose=False):
     """
     Get a bibentry from a DOI.
 
@@ -120,17 +123,18 @@ def get_doi_bibentry(doi,verbose=False):
         If the entry is not found.
     """
     url = "https://doi.org/" + doi
-    headers = { 'Accept': 'application/x-bibtex; charset=utf-8' }
-    page = requests.get(url,headers=headers,timeout=10)
+    headers = {'Accept': 'application/x-bibtex; charset=utf-8'}
+    page = requests.get(url, headers=headers, timeout=10)
     if page.status_code == 200:
-        entries = parse_bytes(page.content,'bibtex').entries
+        entries = parse_bytes(page.content, 'bibtex').entries
         if verbose:
             print("Success!")
         return sanitize_entry(list(entries.values())[0])
     else:
         raise ValueError("Not found! Please check the citation key and whether you have access to doi.org.")
 
-def get_arxiv_bibentry(arxiv_key,verbose=False):
+
+def get_arxiv_bibentry(arxiv_key, verbose=False):
     """
     Get a bibentry from an arXiv identifier.
 
@@ -151,29 +155,30 @@ def get_arxiv_bibentry(arxiv_key,verbose=False):
         If the entry is not found.
     """
     url = "http://export.arxiv.org/api/query?id_list=" + arxiv_key
-    page = requests.get(url,timeout=10)
+    page = requests.get(url, timeout=10)
     tree = etree.fromstring(page.content)
-    if doi := tree.xpath("//a:entry/b:doi",namespaces={ 'a': ATOM,'b': ARXIV }):
+    if doi := tree.xpath("//a:entry/b:doi", namespaces={'a': ATOM, 'b': ARXIV}):
         if verbose:
-            print("Detected DOI in arXiv record...",end=" ")
-        bibentry = getbibentry(doi[0].text,verbose=verbose)
-    elif title := tree.xpath("//a:entry/a:title",namespaces={ 'a': ATOM }):
+            print("Detected DOI in arXiv record...", end=" ")
+        bibentry = getbibentry(doi[0].text, verbose=verbose)
+    elif title := tree.xpath("//a:entry/a:title", namespaces={'a': ATOM}):
         if verbose:
             print("Success!")
         fields = [("title", title[0].text)]
-        if journal := tree.xpath("//a:entry/a:journal",namespaces={ 'a': ATOM }):
-            fields += [("note",journal[0].text)]
+        if journal := tree.xpath("//a:entry/a:journal", namespaces={'a': ATOM}):
+            fields += [("note", journal[0].text)]
         else:
-            fields += [("note","Preprint")]
-        fields += [("year", tree.xpath("//a:entry/a:published",namespaces={ 'a':ATOM })[0].text[:4])]
+            fields += [("note", "Preprint")]
+        fields += [("year", tree.xpath("//a:entry/a:published",namespaces={'a': ATOM})[0].text[:4])]
         bibentry = Entry("unpublished", fields=fields)
-        bibentry.persons["author"] = [Person(author.text) for author in tree.xpath("//a:entry/a:author/a:name",namespaces={ 'a': ATOM })]
+        bibentry.persons["author"] = [Person(author.text) for author in tree.xpath("//a:entry/a:author/a:name", namespaces={'a': ATOM})]
         bibentry = sanitize_entry(bibentry)
     else:
         raise ValueError(f"Could not find citation for {arxiv_key}. Please check the citation key and whether you have access to arXiv.")
     bibentry.fields["eprint"] = arxiv_key
     bibentry.fields["archiveprefix"] = "arXiv"
     return bibentry
+
 
 def get_pubmed_bibentry(pmid, verbose=False):
     """
@@ -203,11 +208,12 @@ def get_pubmed_bibentry(pmid, verbose=False):
             doi = data['records'][0]['doi']
             if verbose:
                 print(f"Detected doi.org/{doi} in PubMed record...",end=" ")
-            bibentry = sanitize_entry(getbibentry(doi,verbose=verbose))
+            bibentry = sanitize_entry(getbibentry(doi, verbose=verbose))
         except Exception as exc:
             raise ValueError(f'Could not find citation for {pmid}. Please check the citation key and whether you have access to PubMed.') from exc
         bibentry.fields["PMID"] = pmid[5:]
         return bibentry
+
 
 def sanitize_entry(entry):
     """
@@ -224,7 +230,8 @@ def sanitize_entry(entry):
         entry.fields["url"] = parse.unquote(entry.fields["url"])
     return entry
 
-def sanitize_string(string,title=False):
+
+def sanitize_string(string, title=False):
     """
     Sanitize a string: Removes newlines and tabs, and converts unicode characters to LaTeX. If title is True, also protects title capitalization.
     """
