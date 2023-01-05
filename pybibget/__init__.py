@@ -1,5 +1,5 @@
 import argparse, re
-import pybibget.bibentry
+import pybibget.bibentry as bibentry
 import pybtex.database
 
 def pybibget():
