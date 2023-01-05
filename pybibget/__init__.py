@@ -1,4 +1,5 @@
 import argparse
+import asyncio
 import re
 import sys
 import pybtex.database
@@ -19,7 +20,7 @@ def pybibget() -> None:
     if not args.keys:
         parser.print_help()
         exit(1)
-    get_citations(args.keys, verbose=args.verbose, file=args.file_name)
+    asyncio.run(get_citations(args.keys, verbose=args.verbose, file=args.file_name))
 
 
 def pybibparse():
@@ -61,16 +62,19 @@ def pybibparse():
             'successfully before running pybibget.")
 
 
-def get_citations(keys, verbose=False, file=None):
+async def get_citations(keys, verbose=False, file=None):
     """
     Retrieves BibTeX entries for given citation keys and writes them to file or stdout
     """
+    bibentries = await asyncio.gather(*[bibentry.getbibentry(key, verbose=verbose) for key in keys])
+    #except ValueError as error:
+    #    print(error)
+    #    return
     bib_data = pybtex.database.BibliographyData()
-    for key in keys:
-        try:
-            bib_data.entries[key] = bibentry.getbibentry(key, verbose=verbose)
-        except ValueError as error:
-            print(error)
+    for entry, key in bibentries:
+        if entry:
+            bib_data.entries[key] = entry
+        
     number_of_entries = len(bib_data.entries)
     bib_data = bib_data.to_string('bibtex')
     if file:
