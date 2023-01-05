@@ -84,4 +84,4 @@ def get_citations(keys, verbose=False, file=None):
 
 
 if __name__ == '__main__':
-    pybibget()
+    sys.exit(pybibget())
