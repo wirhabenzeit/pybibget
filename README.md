@@ -154,9 +154,18 @@ Succesfully appended 2 BibTeX entries to bibliography.bib
 
 ## Data Sources
 
-| Citation key         | Search Strategy                        |
-|----------------------|-------------------------------|
-| MathSciNet         | MathSciNet (requires subscription)                    |
-| DOI | Tries MathSciNet, otherwise uses [doi.org](https://doi.org)                       |
-| arXiv           | Uses DOI-strategy if `doi` in metadata, otherwise `unpublished` entry with journal-reference (if provided) |
-| PMID:271968          | Uses DOI-strategy                        |
+### MathSciNet
+Directly accesses [MathSciNet](https://mathscinet.ams.org/mathscinet/index.html) and uses the provided citation unmodified
+
+### DOI
+First searches for the DOI on [MathSciNet](https://mathscinet.ams.org/mathscinet/index.html). If successful, uses the MathSciNet strategy, otherwise uses the citation from [doi.org](https://doi.org) with the following modifications:
+- Author names and title are converted to TeX form (special characters like `ö` are converted to `"{o}`)
+- Capital words in the title are surrounded by `{...}`to ensure capitalization
+- Publication month data is removed
+
+### PubMed
+Searches for the DOI on [PubMed](https://pubmed.ncbi.nlm.nih.gov), then uses the DOI strategy and appends `pmid = [PMID]` to the resulting citation.
+
+### arXiv 
+Uses DOI strategy if metadata contains `doi`. 
+Otherwise creates an `unpublished` bib-entry with `note = "Preprint"` or `note = [Journal Metadata]` (if provided). In any-case appends `eprint = [arXiv identifier]` to the citation.
