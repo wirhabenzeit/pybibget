@@ -1,0 +1,287 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{10.1109/TIT.2006.885507}{article}{}
+      \name{author}{2}{}{%
+        {{hash=204f23c4cd71374a68afa533fd9c9d74}{%
+           family={Candes},
+           familyi={C\bibinitperiod},
+           given={Emmanuel\bibnamedelima J.},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4cea0d7ce90ed017dfa21b4cee6c72e9}{%
+           family={Tao},
+           familyi={T\bibinitperiod},
+           given={Terence},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{43818a6f8e659b087c82464a1f1e271b}
+      \strng{fullhash}{43818a6f8e659b087c82464a1f1e271b}
+      \strng{bibnamehash}{43818a6f8e659b087c82464a1f1e271b}
+      \strng{authorbibnamehash}{43818a6f8e659b087c82464a1f1e271b}
+      \strng{authornamehash}{43818a6f8e659b087c82464a1f1e271b}
+      \strng{authorfullhash}{43818a6f8e659b087c82464a1f1e271b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0018-9448}
+      \field{journaltitle}{IEEE Trans. Inform. Theory}
+      \field{number}{12}
+      \field{title}{Near-optimal signal recovery from random projections: universal encoding strategies?}
+      \field{volume}{52}
+      \field{year}{2006}
+      \true{nocite}
+      \field{pages}{5406\bibrangedash 5425}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1109/TIT.2006.885507
+      \endverb
+      \verb{mrnumber}
+      \verb 2300700
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/TIT.2006.885507
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/TIT.2006.885507
+      \endverb
+    \endentry
+    \entry{10.1109/CVPR.2016.90}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorbibnamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 {IEEE} Conference on Computer Vision and Pattern Recognition ({CVPR})}
+      \field{title}{{Deep} {Residual} {Learning} for {Image} {Recognition}}
+      \field{year}{2016}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1109/cvpr.2016.90
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/cvpr.2016.90
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/cvpr.2016.90
+      \endverb
+    \endentry
+    \entry{math/0211159}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=cf1bb040edf60cdef5b52e30eee4f561}{%
+           family={Perelman},
+           familyi={P\bibinitperiod},
+           given={Grisha},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{cf1bb040edf60cdef5b52e30eee4f561}
+      \strng{fullhash}{cf1bb040edf60cdef5b52e30eee4f561}
+      \strng{bibnamehash}{cf1bb040edf60cdef5b52e30eee4f561}
+      \strng{authorbibnamehash}{cf1bb040edf60cdef5b52e30eee4f561}
+      \strng{authornamehash}{cf1bb040edf60cdef5b52e30eee4f561}
+      \strng{authorfullhash}{cf1bb040edf60cdef5b52e30eee4f561}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{note}{preprint}
+      \field{title}{{The} entropy formula for the {Ricci} flow and its geometric applications}
+      \field{year}{2002}
+      \true{nocite}
+      \verb{eprint}
+      \verb math/0211159
+      \endverb
+    \endentry
+    \entry{hep-th/9711200}{article}{}
+      \name{author}{2}{}{%
+        {{hash=474727e4a67e40160c407439edac2326}{%
+           family={Phan},
+           familyi={P\bibinitperiod},
+           given={Trung\bibnamedelima V.},
+           giveni={T\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=02ad46cfd0a2efb5296db4892f8d275d}{%
+           family={Doan},
+           familyi={D\bibinitperiod},
+           given={Anh},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{b601065d4e517180ccc1f7e9caf17db7}
+      \strng{fullhash}{b601065d4e517180ccc1f7e9caf17db7}
+      \strng{bibnamehash}{b601065d4e517180ccc1f7e9caf17db7}
+      \strng{authorbibnamehash}{b601065d4e517180ccc1f7e9caf17db7}
+      \strng{authornamehash}{b601065d4e517180ccc1f7e9caf17db7}
+      \strng{authorfullhash}{b601065d4e517180ccc1f7e9caf17db7}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{issn}{1433-8157}
+      \field{journaltitle}{J. Geom. Graph.}
+      \field{number}{2}
+      \field{title}{A curious use of extra dimension in classical mechanics: geometrization of potential}
+      \field{volume}{25}
+      \field{year}{2021}
+      \true{nocite}
+      \field{pages}{265\bibrangedash 270}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1023/a:1026654312961
+      \endverb
+      \verb{eprint}
+      \verb hep-th/9711200
+      \endverb
+      \verb{mrnumber}
+      \verb 4394144
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1023/a:1026654312961
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1023/a:1026654312961
+      \endverb
+    \endentry
+    \entry{PMID:271968}{article}{}
+      \name{author}{3}{}{%
+        {{hash=02fd72675bce58620937dd59333f2aea}{%
+           family={Sanger},
+           familyi={S\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=293d3dab39bb4bfb3f0472b08ea42ef5}{%
+           family={Nicklen},
+           familyi={N\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=51bcf2e9eb4aa5956a2447391b6fcd19}{%
+           family={Coulson},
+           familyi={C\bibinitperiod},
+           given={A.\bibnamedelimi R.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Proceedings of the National Academy of Sciences}%
+      }
+      \strng{namehash}{dd2ceb3027f18b1a9c01a99026d50dd5}
+      \strng{fullhash}{dd2ceb3027f18b1a9c01a99026d50dd5}
+      \strng{bibnamehash}{dd2ceb3027f18b1a9c01a99026d50dd5}
+      \strng{authorbibnamehash}{dd2ceb3027f18b1a9c01a99026d50dd5}
+      \strng{authornamehash}{dd2ceb3027f18b1a9c01a99026d50dd5}
+      \strng{authorfullhash}{dd2ceb3027f18b1a9c01a99026d50dd5}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{12}
+      \field{title}{{DNA} sequencing with chain-terminating inhibitors}
+      \field{volume}{74}
+      \field{year}{1977}
+      \true{nocite}
+      \field{pages}{5463\bibrangedash 5467}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1073/pnas.74.12.5463
+      \endverb
+      \verb{pmid}
+      \verb 271968
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1073/pnas.74.12.5463
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1073/pnas.74.12.5463
+      \endverb
+    \endentry
+    \entry{MR0026286}{article}{}
+      \name{author}{1}{}{%
+        {{hash=22e2130b8d96f93daba648ff62af869b}{%
+           family={Shannon},
+           familyi={S\bibinitperiod},
+           given={C.\bibnamedelimi E.},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{fullhash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{bibnamehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authorbibnamehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authornamehash}{22e2130b8d96f93daba648ff62af869b}
+      \strng{authorfullhash}{22e2130b8d96f93daba648ff62af869b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0005-8580}
+      \field{journaltitle}{Bell System Tech. J.}
+      \field{title}{A mathematical theory of communication}
+      \field{volume}{27}
+      \field{year}{1948}
+      \true{nocite}
+      \field{pages}{379\bibrangedash 423\bibrangessep 623\bibrangedash 656}
+      \range{pages}{79}
+      \verb{doi}
+      \verb 10.1002/j.1538-7305.1948.tb01338.x
+      \endverb
+      \verb{mrnumber}
+      \verb 26286
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1002/j.1538-7305.1948.tb01338.x
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1002/j.1538-7305.1948.tb01338.x
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,20 @@
+\documentclass[a4paper,12pt]{article}%
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[backend=biber, datamodel=pmid-mr-arxiv,url=false]{biblatex}
+\usepackage{hyperref}
+\addbibresource{example.bib}
+
+\makeatletter
+\DeclareFieldFormat{eprint}{\href{https://arxiv.org/\abx@arxivpath/#1}{\nolinkurl{arXiv:#1}}}
+\makeatother 
+\DeclareFieldFormat{pmid}{\href{https://pubmed.ncbi.nlm.nih.gov/#1}{\nolinkurl{PMID:#1}}}
+\DeclareFieldFormat{mrnumber}{\href{https://www.ams.org/mathscinet-getitem?mr=MR#1}{\nolinkurl{MR#1}}}
+
+\renewbibmacro*{eprint}{\printfield{mrnumber}\newunit\newblock\printfield{pmid}\newunit\newblock\printfield{eprint}}
+
+\begin{document}
+  \nocite{MR0026286,10.1109/TIT.2006.885507,math/0211159,PMID:271968,10.1109/CVPR.2016.90,hep-th/9711200}
+  \printbibliography
+\end{document} 

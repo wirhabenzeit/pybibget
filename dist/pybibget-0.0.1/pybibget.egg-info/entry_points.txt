@@ -1,0 +1,2 @@
+[console_scripts]
+pybibget = pybibget.pybibget:pybibget

@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{10.1109/TIT.2006.885507}
+Emmanuel~J. Candes and Terence Tao.
+\newblock Near-optimal signal recovery from random projections: universal
+  encoding strategies?
+\newblock {\em IEEE Trans. Inform. Theory}, 52(12):5406--5425, 2006.
+
+\bibitem{10.1109/CVPR.2016.90}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock {Deep} {Residual} {Learning} for {Image} {Recognition}.
+\newblock In {\em 2016 {IEEE} Conference on Computer Vision and Pattern
+  Recognition ({CVPR})}. {IEEE}, 2016.
+
+\bibitem{math/0211159}
+Grisha Perelman.
+\newblock {The} entropy formula for the {Ricci} flow and its geometric
+  applications.
+\newblock preprint, 2002.
+
+\bibitem{hep-th/9711200}
+Trung~V. Phan and Anh Doan.
+\newblock A curious use of extra dimension in classical mechanics:
+  geometrization of potential.
+\newblock {\em J. Geom. Graph.}, 25(2):265--270, 2021.
+
+\bibitem{PMID:271968}
+F.~Sanger, S.~Nicklen, and A.~R. Coulson.
+\newblock {DNA} sequencing with chain-terminating inhibitors.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  74(12):5463--5467, 1977.
+
+\bibitem{MR0026286}
+C.~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock {\em Bell System Tech. J.}, 27:379--423, 623--656, 1948.
+
+\end{thebibliography}

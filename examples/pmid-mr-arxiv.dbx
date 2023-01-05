@@ -1,0 +1,6 @@
+\DeclareDatamodelFields[type=field,datatype=verbatim]{mrnumber}
+\DeclareDatamodelEntryfields{mrnumber}
+\DeclareDatamodelFields[type=field,datatype=verbatim]{pmid}
+\DeclareDatamodelEntryfields{pmid}
+\DeclareDatamodelFields[type=field,datatype=verbatim]{arxiv}
+\DeclareDatamodelEntryfields{arxiv}

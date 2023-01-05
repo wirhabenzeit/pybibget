@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+pybibget/__init__.py
+pybibget/bibentry.py
+pybibget.egg-info/PKG-INFO
+pybibget.egg-info/SOURCES.txt
+pybibget.egg-info/dependency_links.txt
+pybibget.egg-info/entry_points.txt
+pybibget.egg-info/requires.txt
+pybibget.egg-info/top_level.txt
+pybibget.egg-info/zip-safe
