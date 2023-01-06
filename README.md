@@ -5,14 +5,15 @@ Command line utility to automatically retrieve BibTeX citations from MathSciNet,
 ## Installation
 
 ```bash
-$ pip install pybibget
+% pip install pybibget
 ```
 
 ## Usage
 
 ### Citation Keys
 
-`pybibget` provides a command line interface to obtain BibTeX entries from citation keys of the form 
+`pybibget` provides a command line interface to obtain BibTeX entries from citation keys of the form
+
 | Citation key         | Format                        |
 |----------------------|-------------------------------|
 | MR0026286            | MathSciNet (requires subscription)                    |
@@ -22,8 +23,9 @@ $ pip install pybibget
 | 10.1109/CVPR.2016.90 | DOI                           |
 
 `pybibget key1 key2 ...` prints the BibTeX entries `stdout`:
+
 ```console
-% pybibget MR0026286 10.1109/TIT.2006.885507 math/0211159 PMID:271968 10.1109/CVPR.2016.90 hep-th/9711200
+% pybibget MR0026286 10.1109/TIT.2006.885507 math/0211159 PMID:271968 10.1109/CVPR.2016.90 10.4310/ATMP.1998.v2.n2.a1
 
 @article{MR0026286,
     AUTHOR = "Shannon, C. E.",
@@ -91,33 +93,35 @@ $ pip install pybibget
     booktitle = "2016 {IEEE} Conference on Computer Vision and Pattern Recognition ({CVPR})"
 }
 
-@article{hep-th/9711200,
-    AUTHOR = "Phan, Trung V. and Doan, Anh",
-    TITLE = "A curious use of extra dimension in classical mechanics: geometrization of potential",
-    JOURNAL = "J. Geom. Graph.",
-    FJOURNAL = "Journal for Geometry and Graphics",
-    VOLUME = "25",
-    YEAR = "2021",
+@article{10.4310/ATMP.1998.v2.n2.a1,
+    AUTHOR = "Maldacena, Juan",
+    TITLE = "The large {$N$} limit of superconformal field theories and supergravity",
+    JOURNAL = "Adv. Theor. Math. Phys.",
+    FJOURNAL = "Advances in Theoretical and Mathematical Physics",
+    VOLUME = "2",
+    YEAR = "1998",
     NUMBER = "2",
-    PAGES = "265--270",
-    ISSN = "1433-8157",
-    MRCLASS = "70B05",
-    MRNUMBER = "4394144",
-    DOI = "10.1023/a:1026654312961",
-    URL = "https://doi.org/10.1023/a:1026654312961",
-    eprint = "hep-th/9711200",
-    archiveprefix = "arXiv"
+    PAGES = "231--252",
+    ISSN = "1095-0761",
+    MRCLASS = "81T30 (81T60 83E30)",
+    MRNUMBER = "1633016",
+    MRREVIEWER = "Douglas J. Smith",
+    DOI = "10.4310/ATMP.1998.v2.n2.a1",
+    URL = "https://doi.org/10.4310/ATMP.1998.v2.n2.a1"
 }
 ```
+
 With the option `-f filename` the result can be *appended* to any given file directly:
+
 ```console
-% pybibget MR0026286 10.1109/TIT.2006.885507 math/0211159 PMID:271968 10.1109/CVPR.2016.90 hep-th/9711200 -f bibliography.bib
+% pybibget MR0026286 10.1109/TIT.2006.885507 math/0211159 PMID:271968 10.1109/CVPR.2016.90 10.4310/ATMP.1998.v2.n2.a1 -f bibliography.bib
 Succesfully appended 6 BibTeX entries to bibliography.bib
-``` 
+```
 
 ### TeX File Parsing
 
 `pybibparse` automatically parses missing citations from the `biber` or `bibtex` log for a given `TeX` file
+
 ```console
 % pybibparse example 
 
@@ -146,6 +150,7 @@ Succesfully appended 6 BibTeX entries to bibliography.bib
 ```
 
 With the option `-w [file_name]` the obtained citations are automatically appended to the `.bib` file. `[file_name]` is optional if the `.bib` file has been specified in the `TeX` file.
+
 ```console
 % pybibparse example -w
 Succesfully appended 2 BibTeX entries to bibliography.bib
@@ -154,17 +159,22 @@ Succesfully appended 2 BibTeX entries to bibliography.bib
 ## Data Sources
 
 ### MathSciNet
+
 Directly accesses [MathSciNet](https://mathscinet.ams.org/mathscinet/index.html) and uses the provided citation unmodified
 
 ### DOI
+
 First searches for the DOI on [MathSciNet](https://mathscinet.ams.org/mathscinet/index.html). If successful, uses the MathSciNet strategy, otherwise uses the citation from [doi.org](https://doi.org) with the following modifications:
+
 - Author names and title are converted to TeX form (special characters like `ö` are converted to `"{o}`)
 - Capital words in the title are surrounded by `{...}`to ensure capitalization
 - Publication month data is removed
 
 ### PubMed
+
 Searches for the DOI on [PubMed](https://pubmed.ncbi.nlm.nih.gov), then uses the DOI strategy and appends `pmid = [PMID]` to the resulting citation.
 
-### arXiv 
+### arXiv
+
 Uses DOI strategy if metadata contains `doi`. 
 Otherwise creates an `unpublished` bib-entry with `note = "Preprint"` or `note = [Journal Metadata]` (if provided). In any-case appends `eprint = [arXiv identifier]` to the citation.

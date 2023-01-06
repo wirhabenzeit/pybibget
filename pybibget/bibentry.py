@@ -104,7 +104,7 @@ async def get_mathscinet_bibentry(mrkey=None, doi=None):
             tree = html.fromstring(page.text)
             bibstrings = tree.xpath('//pre/text()')
             bibstr = bibstrings[0]
-            if len(bibstr)>1:
+            if len(bibstrings)>1:
                 log.warn(f"MathSciNet returned more than one entry for {mrkey if mrkey else doi}. Using the first one but this may be wrong.")
             entries = parse_string(bibstr, 'bibtex').entries
             log.info(msg_found(mrkey if mrkey else doi, "MathSciNet"))
@@ -252,9 +252,9 @@ def sanitize_string(string, title=False):
     """
     Sanitize a string: Removes newlines and tabs, and converts unicode characters to LaTeX. If title is True, also protects title capitalization.
     """
-    string = string.replace("\n", "").replace("\t", "")
-    string = LatexNodes2Text().latex_to_text(string)
-    string = unicode_to_latex(string)
+    string = string.replace("\n", "").replace("\t", "").replace("\\\\","\\")
+    string = LatexNodes2Text(math_mode='verbatim').latex_to_text(string)
+    string = unicode_to_latex(string,non_ascii_only=True)
     if title:
         string = re.sub(r'\b([A-Z].*?)\b',r'{\1}',string)
     return string
