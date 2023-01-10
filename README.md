@@ -111,7 +111,7 @@ Command line utility to automatically retrieve BibTeX citations from MathSciNet,
 }
 ```
 
-With the option `-f filename` the result can be *appended* to any given file directly:
+With the option `-w filename` the result can be *appended* to any given file directly:
 
 ```console
 % pybibget MR0026286 10.1109/TIT.2006.885507 math/0211159 PMID:271968 10.1109/CVPR.2016.90 10.4310/ATMP.1998.v2.n2.a1 -f bibliography.bib
