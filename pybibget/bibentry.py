@@ -450,7 +450,7 @@ class Bibget():
             return await self.update(entry, candidate_doi=ans)
 
     async def update(self,entry,candidate=None,candidate_doi=None):
-        title = LatexNodes2Text(math_mode='verbatim').latex_to_text(entry.fields["title"])
+        title = LatexNodes2Text(math_mode='verbatim').latex_to_text(entry.fields["title"]) if "title" in entry.fields else None
         if 'mrnumber' in entry.fields:
             log.info(f"MR{entry.fields['mrnumber']} ({title}): Skipping MR entry")
             return entry
@@ -481,6 +481,9 @@ class Bibget():
             except:
                 log.info(f"{entry.fields['doi']} ({title}): Not found on MathSciNet, leaving old citation")
                 return entry
+        if not title:
+            log.info(f"{entry.key}: No title found, leaving old citation")
+            return entry
         try:
             log.info(f'"{title}": Checking for DOI on Scopus')
             updated_entry = await self.lookup_scopus(title)
