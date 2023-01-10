@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pybibget
-Version: 0.0.2
+Version: 0.1.0
 Summary: Command line utility to automatically retrieve BibTeX citations from MathSciNet, arXiv, PubMed and doi.org
 Home-page: https://github.com/wirhabenzeit/pybibget
 Author: Dominik Schröder
@@ -171,6 +171,10 @@ With the option `-w [file_name]` the obtained citations are automatically append
 % pybibparse example -w
 Succesfully appended 2 BibTeX entries to bibliography.bib
 ```
+
+### Updating existing bibliographies
+
+`pybibupdate [file.bib]` scans an existing `.bib`-file and searches for entries with updated information on [Scopus](https://www.scopus.com/). This functionality requires an API-key which can be obtained from [https://dev.elsevier.com](https://dev.elsevier.com)
 
 ## Data Sources
 
