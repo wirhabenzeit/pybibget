@@ -156,6 +156,10 @@ With the option `-w [file_name]` the obtained citations are automatically append
 Succesfully appended 2 BibTeX entries to bibliography.bib
 ```
 
+### Updating existing bibliographies
+
+`pybibupdate [file.bib]` scans an existing `.bib`-file and searches for entries with updated information on [Scopus](https://www.scopus.com/). This functionality requires an API-key which can be obtained from [https://dev.elsevier.com](https://dev.elsevier.com)
+
 ## Data Sources
 
 ### MathSciNet
