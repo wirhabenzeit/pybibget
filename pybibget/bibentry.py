@@ -392,6 +392,21 @@ class Bibget():
                 reason = str(page.status_code) + "; " + exc.args[0]
                 raise ValueError(msg_not_found(arxiv_key, "arXiv", reason=reason))
 
+    async def arxiv_list(self,author_id):
+        url = "http://" + author_id + ".atom2"
+        async with httpx.AsyncClient() as client:
+            page = await client.get(url, follow_redirects=True)
+            try:
+                tree = etree.fromstring(page.text.encode())
+                ids = []
+                for id in tree.xpath("//a:feed/a:entry/a:id", namespaces={'a': ATOM}):
+                    ids.append(re.search(r"abs\/([a-z0-9.]*)v", id.text).group(1))
+                ids.sort()
+                return ids
+            except Exception as exc:
+                reason = str(page.status_code) + "; " + exc.args[0]
+                raise ValueError(msg_not_found(author_id, "arXiv", reason=reason))
+
     async def citation_pubmed(self,pmid):
         doi = await self.get_doi(pmid=pmid)
         log.info(msg_looking(doi, "Crossref (forwarded from PubMed)"))

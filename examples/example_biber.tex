@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage[backend=biber, datamodel=pmid-mr-arxiv,url=false]{biblatex}
+\usepackage[backend=biber,datamodel=pmid-mr-arxiv,url=false]{biblatex}
 \usepackage{hyperref} 
 \addbibresource{example.bib} 
 
@@ -11,7 +11,6 @@
 \makeatother  
 \DeclareFieldFormat{pmid}{\href{https://pubmed.ncbi.nlm.nih.gov/#1}{\nolinkurl{PMID:#1}}}
 \DeclareFieldFormat{mrnumber}{\href{https://www.ams.org/mathscinet-getitem?mr=MR#1}{\nolinkurl{MR#1}}}
-
 \renewbibmacro*{eprint}{\printfield{mrnumber}\newunit\newblock\printfield{pmid}\newunit\newblock\printfield{eprint}} 
   
 \begin{document}

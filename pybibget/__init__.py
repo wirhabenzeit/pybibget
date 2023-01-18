@@ -20,6 +20,7 @@ def pybibget():
     parser = argparse.ArgumentParser(prog='pybibget', description='Command line utility to automatically retrieve BibTeX citations from MathSciNet, arXiv and PubMed')
     parser.add_argument('keys', type=str, metavar='citekeys', nargs='*', help='MathSciNet (MRxxxxx), arXiv (xxxx.xxxxx), PubMed (PMID:xxxxxxxx) or DOI (10.xxx/xxxxx) citation keys (separated by spaces)')
     parser.add_argument('-w', action='store', dest='file_name', help='Append output to file (default: write output to stdout)')
+    parser.add_argument('-arxiv', action='store', dest='arxiv_author', help='Get all articles from an arXiv public author identifier (e.g. arxiv.org/a/last_f_1)')
     add_optional_args(parser)
     args = parser.parse_args()
     kwargs = {'file': args.file_name }
@@ -27,11 +28,17 @@ def pybibget():
         kwargs['verbose'] = log.DEBUG
     elif args.verbose:
         kwargs['verbose'] = log.INFO
-    if not args.keys:
+    keys = []
+    if args.keys:
+        keys += args.keys
+    if args.arxiv_author:
+        bibget = Bibget(mathscinet=True)
+        keys += asyncio.run(bibget.arxiv_list(args.arxiv_author))
+    if not keys:
         parser.print_help()
         exit(1)
-    
-    get_citations(args.keys, **kwargs)
+
+    get_citations(keys, **kwargs)
 
 
 def pybibparse():
@@ -78,7 +85,14 @@ def pybibparse():
 def pybibupdate():
     parser = argparse.ArgumentParser(prog='pybibget', description='Command line utility to update BibTeX citations from MathSciNet and Scopus')
     parser.add_argument('file_name', type=str, metavar='bib_file(.bib)', help='bib file to be parsed for citations')
+    add_optional_args(parser)
     args = parser.parse_args()
+    if args.debug:
+        log.basicConfig(format="%(levelname)s: %(message)s", level=log.DEBUG)
+    elif args.verbose:
+        log.basicConfig(format="%(levelname)s: %(message)s", level=log.INFO)
+    else:
+        log.basicConfig(format="%(levelname)s: %(message)s", level=log.WARNING)
     if not args.file_name:
         parser.print_help()
         sys.exit()
@@ -87,8 +101,6 @@ def pybibupdate():
     with open(args.file_name) as file:
         bib_file = file.read()
     bibliography = parse_string(bib_file, 'bibtex').entries
-
-    log.basicConfig(format="%(levelname)s: %(message)s", level=log.WARNING)
 
     bibget = Bibget(mathscinet=True)
     updated_bibliography = asyncio.run(bibget.update_all(bibliography))
